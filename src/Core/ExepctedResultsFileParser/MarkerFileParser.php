@@ -8,17 +8,17 @@ namespace DaveLiddament\StaticAnalyserAnalyser\Core\ExepctedResultsFileParser;
 
 use DaveLiddament\StaticAnalyserAnalyser\Core\Common\LineNumber;
 
-class ExpectedResultsFileParser
+class MarkerFileParser
 {
 
     /**
-     * Returns all the ExpectedResults found in a file.
+     * Returns all the Markers found in a file.
      *
      * @return Marker[]
      */
-    public function getExpectedResults(string $fileContents): array
+    public function getMarkers(string $fileContents): array
     {
-        $expectedResults = [];
+        $markers = [];
 
         $lines = explode(PHP_EOL, $fileContents);
         foreach($lines as $index => $line) {
@@ -27,12 +27,12 @@ class ExpectedResultsFileParser
             foreach(Marker::VALID_TYPES as $type) {
                 $searchTerm = "// $type";
                 if (strpos($line, $searchTerm) !== false) {
-                    $expectedResults[] = new Marker($type, new LineNumber($lineNumber));
+                    $markers[] = new Marker($type, new LineNumber($lineNumber));
                 }
             }
         }
 
-        return $expectedResults;
+        return $markers;
     }
 
 }

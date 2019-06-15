@@ -8,20 +8,20 @@ namespace DaveLiddament\StaticAnalyserAnalyser\Test\Core\ExpectedResultsParser;
 
 use DaveLiddament\StaticAnalyserAnalyser\Core\Common\LineNumber;
 use DaveLiddament\StaticAnalyserAnalyser\Core\ExepctedResultsFileParser\Marker;
-use DaveLiddament\StaticAnalyserAnalyser\Core\ExepctedResultsFileParser\ExpectedResultsFileParser;
+use DaveLiddament\StaticAnalyserAnalyser\Core\ExepctedResultsFileParser\MarkerFileParser;
 use PHPUnit\Framework\TestCase;
 
-class ExpectedResultsFileParserTest extends TestCase
+class MarkerFileParserTest extends TestCase
 {
     /**
-     * @var ExpectedResultsFileParser
+     * @var MarkerFileParser
      */
-    private $expectedResultsFileParser;
+    private $markerFileParser;
 
 
     protected function setUp(): void
     {
-        $this->expectedResultsFileParser = new ExpectedResultsFileParser();
+        $this->markerFileParser = new MarkerFileParser();
     }
 
 
@@ -68,7 +68,7 @@ class ExpectedResultsFileParserTest extends TestCase
     {
         $fullFileName = __DIR__ . "/resources/$fileName";
         $fileContents = file_get_contents($fullFileName);
-        $actualResults = $this->expectedResultsFileParser->getExpectedResults($fileContents);
+        $actualResults = $this->markerFileParser->getMarkers($fileContents);
         $this->assertEquals(count($expectedResults), count($actualResults));
         foreach($expectedResults as $index => $expectedResult) {
             $actualResult = $actualResults[$index];
