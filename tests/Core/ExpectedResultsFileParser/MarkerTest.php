@@ -7,19 +7,19 @@ namespace DaveLiddament\StaticAnalyserAnalyser\Test\Core\ExpectedResultsFilePars
 
 
 use DaveLiddament\StaticAnalyserAnalyser\Core\Common\LineNumber;
-use DaveLiddament\StaticAnalyserAnalyser\Core\ExepctedResultsFileParser\ExpectedResult;
+use DaveLiddament\StaticAnalyserAnalyser\Core\ExepctedResultsFileParser\Marker;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
-class ExpectedResultTest extends TestCase
+class MarkerTest extends TestCase
 {
 
     public function dataProvider(): array
     {
         return [
-            [ExpectedResult::OK],
-            [ExpectedResult::ISSUE],
-            [ExpectedResult::OPTIONAL],
+            [Marker::OK],
+            [Marker::ISSUE],
+            [Marker::OPTIONAL],
         ];
     }
 
@@ -30,15 +30,15 @@ class ExpectedResultTest extends TestCase
     public function testHappyPath(string $type): void
     {
         $lineNumber = new LineNumber(7);
-        $okExpectedResult = new ExpectedResult($type, $lineNumber);
+        $marker = new Marker($type, $lineNumber);
 
-        $this->assertSame($type, $okExpectedResult->getType());
-        $this->assertSame($lineNumber, $okExpectedResult->getLineNumber());
+        $this->assertSame($type, $marker->getType());
+        $this->assertSame($lineNumber, $marker->getLineNumber());
     }
 
     public function testInvalidType(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        new ExpectedResult("rubbish", new LineNumber(1));
+        new Marker("rubbish", new LineNumber(1));
     }
 }

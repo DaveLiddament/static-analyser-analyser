@@ -14,7 +14,7 @@ class ExpectedResultsFileParser
     /**
      * Returns all the ExpectedResults found in a file.
      *
-     * @return ExpectedResult[]
+     * @return Marker[]
      */
     public function getExpectedResults(string $fileContents): array
     {
@@ -24,10 +24,10 @@ class ExpectedResultsFileParser
         foreach($lines as $index => $line) {
             $lineNumber = $index + 1;
 
-            foreach(ExpectedResult::VALID_TYPES as $type) {
+            foreach(Marker::VALID_TYPES as $type) {
                 $searchTerm = "// $type";
                 if (strpos($line, $searchTerm) !== false) {
-                    $expectedResults[] = new ExpectedResult($type, new LineNumber($lineNumber));
+                    $expectedResults[] = new Marker($type, new LineNumber($lineNumber));
                 }
             }
         }

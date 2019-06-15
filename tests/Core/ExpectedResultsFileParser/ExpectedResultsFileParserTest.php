@@ -7,7 +7,7 @@ namespace DaveLiddament\StaticAnalyserAnalyser\Test\Core\ExpectedResultsParser;
 
 
 use DaveLiddament\StaticAnalyserAnalyser\Core\Common\LineNumber;
-use DaveLiddament\StaticAnalyserAnalyser\Core\ExepctedResultsFileParser\ExpectedResult;
+use DaveLiddament\StaticAnalyserAnalyser\Core\ExepctedResultsFileParser\Marker;
 use DaveLiddament\StaticAnalyserAnalyser\Core\ExepctedResultsFileParser\ExpectedResultsFileParser;
 use PHPUnit\Framework\TestCase;
 
@@ -31,28 +31,28 @@ class ExpectedResultsFileParserTest extends TestCase
             [
                 "singleIssue.code",
                 [
-                    new ExpectedResult(ExpectedResult::ISSUE, new LineNumber(5)),
+                    new Marker(Marker::ISSUE, new LineNumber(5)),
                 ],
             ],
             [
                 "singleOK.code",
                 [
-                    new ExpectedResult(ExpectedResult::OK, new LineNumber(8)),
+                    new Marker(Marker::OK, new LineNumber(8)),
                 ],
             ],
             [
                 "singleOptional.code",
                 [
-                    new ExpectedResult(ExpectedResult::OPTIONAL, new LineNumber(3)),
+                    new Marker(Marker::OPTIONAL, new LineNumber(3)),
                 ],
             ],
             [
                 "multipleIssues.code",
                 [
-                    new ExpectedResult(ExpectedResult::OPTIONAL, new LineNumber(5)),
-                    new ExpectedResult(ExpectedResult::ISSUE, new LineNumber(7)),
-                    new ExpectedResult(ExpectedResult::ISSUE, new LineNumber(10)),
-                    new ExpectedResult(ExpectedResult::OK, new LineNumber(12)),
+                    new Marker(Marker::OPTIONAL, new LineNumber(5)),
+                    new Marker(Marker::ISSUE, new LineNumber(7)),
+                    new Marker(Marker::ISSUE, new LineNumber(10)),
+                    new Marker(Marker::OK, new LineNumber(12)),
                 ],
             ],
 
@@ -62,7 +62,7 @@ class ExpectedResultsFileParserTest extends TestCase
     /**
      * @dataProvider  dataProvider
      *
-     * @param ExpectedResult[] $expectedResults
+     * @param Marker[] $expectedResults
      */
     public function testExpectedResults(string $fileName, array $expectedResults): void
     {

@@ -6,11 +6,14 @@ declare(strict_types=1);
 namespace DaveLiddament\StaticAnalyserAnalyser\Core\ExepctedResultsFileParser;
 
 
-use DaveLiddament\StaticAnalyserAnalyser\Core\Common\FileName;
 use DaveLiddament\StaticAnalyserAnalyser\Core\Common\LineNumber;
 use Webmozart\Assert\Assert;
 
-class ExpectedResult
+
+/**
+ * Represents a Marker of some sort (e.g. ISSUE expected here) for SSA.
+ */
+class Marker
 {
 
     public const ISSUE = 'ISSUE';
