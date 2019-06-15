@@ -29,6 +29,12 @@ class MarkerFileParserTest extends TestCase
     {
         return [
             [
+                "description.code",
+                [
+                    new Marker(Marker::DESCRIPTION, new LineNumber(3)),
+                ],
+            ],
+            [
                 "singleIssue.code",
                 [
                     new Marker(Marker::ISSUE, new LineNumber(5)),

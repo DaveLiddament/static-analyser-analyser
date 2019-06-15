@@ -1,0 +1,14 @@
+<?php
+
+// DESCRIPTION
+
+namespace foo;
+
+function Foo()
+{
+    echo $bar;
+}
+
+$a = 7 + Bar();
+
+foo();
