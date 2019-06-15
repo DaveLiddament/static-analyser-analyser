@@ -37,13 +37,18 @@ class Marker
      * @var LineNumber
      */
     private $lineNumber;
+    /**
+     * @var string|null
+     */
+    private $additionalInformation;
 
 
-    public function __construct(string $type, LineNumber $lineNumber)
+    public function __construct(string $type, LineNumber $lineNumber, ?string $additionalInformation)
     {
         Assert::oneOf($type, self::VALID_TYPES, "Invalid type [$type]");
         $this->type = $type;
         $this->lineNumber = $lineNumber;
+        $this->additionalInformation = $additionalInformation;
     }
 
     /**
@@ -60,6 +65,14 @@ class Marker
     public function getLineNumber(): LineNumber
     {
         return $this->lineNumber;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getAdditionalInformation(): ?string
+    {
+        return $this->additionalInformation;
     }
 
 }

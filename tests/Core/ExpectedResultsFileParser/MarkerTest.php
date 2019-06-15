@@ -31,7 +31,7 @@ class MarkerTest extends TestCase
     public function testHappyPath(string $type): void
     {
         $lineNumber = new LineNumber(7);
-        $marker = new Marker($type, $lineNumber);
+        $marker = new Marker($type, $lineNumber, null);
 
         $this->assertSame($type, $marker->getType());
         $this->assertSame($lineNumber, $marker->getLineNumber());
@@ -40,6 +40,14 @@ class MarkerTest extends TestCase
     public function testInvalidType(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        new Marker("rubbish", new LineNumber(1));
+        new Marker("rubbish", new LineNumber(1), null);
+    }
+
+    public function testAdditionalData(): void
+    {
+        $lineNumber = new LineNumber(7);
+        $marker = new Marker(Marker::DESCRIPTION, $lineNumber, "Additional info");
+
+        $this->assertSame( "Additional info", $marker->getAdditionalInformation());
     }
 }

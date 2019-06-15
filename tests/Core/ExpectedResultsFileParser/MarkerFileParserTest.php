@@ -31,34 +31,34 @@ class MarkerFileParserTest extends TestCase
             [
                 "description.code",
                 [
-                    new Marker(Marker::DESCRIPTION, new LineNumber(3)),
+                    new Marker(Marker::DESCRIPTION, new LineNumber(3), null),
                 ],
             ],
             [
                 "singleIssue.code",
                 [
-                    new Marker(Marker::ISSUE, new LineNumber(5)),
+                    new Marker(Marker::ISSUE, new LineNumber(5), null),
                 ],
             ],
             [
                 "singleOK.code",
                 [
-                    new Marker(Marker::OK, new LineNumber(8)),
+                    new Marker(Marker::OK, new LineNumber(8), null),
                 ],
             ],
             [
                 "singleOptional.code",
                 [
-                    new Marker(Marker::OPTIONAL, new LineNumber(3)),
+                    new Marker(Marker::OPTIONAL, new LineNumber(3), null),
                 ],
             ],
             [
                 "multipleIssues.code",
                 [
-                    new Marker(Marker::OPTIONAL, new LineNumber(5)),
-                    new Marker(Marker::ISSUE, new LineNumber(7)),
-                    new Marker(Marker::ISSUE, new LineNumber(10)),
-                    new Marker(Marker::OK, new LineNumber(12)),
+                    new Marker(Marker::OPTIONAL, new LineNumber(5), null),
+                    new Marker(Marker::ISSUE, new LineNumber(7), null),
+                    new Marker(Marker::ISSUE, new LineNumber(10), null),
+                    new Marker(Marker::OK, new LineNumber(12), null),
                 ],
             ],
 

@@ -27,7 +27,7 @@ class MarkerFileParser
             foreach(Marker::VALID_TYPES as $type) {
                 $searchTerm = "// $type";
                 if (strpos($line, $searchTerm) !== false) {
-                    $markers[] = new Marker($type, new LineNumber($lineNumber));
+                    $markers[] = new Marker($type, new LineNumber($lineNumber), null);
                 }
             }
         }
