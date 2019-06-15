@@ -19,11 +19,13 @@ class Marker
     public const ISSUE = 'ISSUE';
     public const OK = 'OK';
     public const OPTIONAL = 'OPTIONAL';
+    public const DESCRIPTION = 'DESCRIPTION';
 
     public const VALID_TYPES = [
         self::ISSUE,
         self::OK,
         self::OPTIONAL,
+        self::DESCRIPTION,
     ];
 
     /**

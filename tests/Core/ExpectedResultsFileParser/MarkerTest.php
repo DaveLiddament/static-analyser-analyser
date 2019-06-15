@@ -20,6 +20,7 @@ class MarkerTest extends TestCase
             [Marker::OK],
             [Marker::ISSUE],
             [Marker::OPTIONAL],
+            [Marker::DESCRIPTION],
         ];
     }
 
