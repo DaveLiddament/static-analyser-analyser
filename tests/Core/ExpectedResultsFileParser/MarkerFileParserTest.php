@@ -7,6 +7,7 @@ namespace DaveLiddament\StaticAnalyserAnalyser\Test\Core\ExpectedResultsParser;
 
 
 use DaveLiddament\StaticAnalyserAnalyser\Core\Common\LineNumber;
+use DaveLiddament\StaticAnalyserAnalyser\Core\ExepctedResultsFileParser\internal\FileLineParser;
 use DaveLiddament\StaticAnalyserAnalyser\Core\ExepctedResultsFileParser\Marker;
 use DaveLiddament\StaticAnalyserAnalyser\Core\ExepctedResultsFileParser\MarkerFileParser;
 use PHPUnit\Framework\TestCase;
@@ -21,7 +22,7 @@ class MarkerFileParserTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->markerFileParser = new MarkerFileParser();
+        $this->markerFileParser = new MarkerFileParser(new FileLineParser());
     }
 
 
@@ -31,7 +32,7 @@ class MarkerFileParserTest extends TestCase
             [
                 "description.code",
                 [
-                    new Marker(Marker::DESCRIPTION, new LineNumber(3), null),
+                    new Marker(Marker::DESCRIPTION, new LineNumber(3), "This is a description"),
                 ],
             ],
             [

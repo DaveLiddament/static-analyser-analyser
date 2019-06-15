@@ -7,9 +7,20 @@ namespace DaveLiddament\StaticAnalyserAnalyser\Core\ExepctedResultsFileParser;
 
 
 use DaveLiddament\StaticAnalyserAnalyser\Core\Common\LineNumber;
+use DaveLiddament\StaticAnalyserAnalyser\Core\ExepctedResultsFileParser\internal\FileLineParser;
 
 class MarkerFileParser
 {
+
+    /**
+     * @var FileLineParser
+     */
+    private $fileLineParser;
+
+    public function __construct(FileLineParser $fileLineParser)
+    {
+        $this->fileLineParser = $fileLineParser;
+    }
 
     /**
      * Returns all the Markers found in a file.
@@ -22,13 +33,11 @@ class MarkerFileParser
 
         $lines = explode(PHP_EOL, $fileContents);
         foreach($lines as $index => $line) {
-            $lineNumber = $index + 1;
+            $lineNumber = new LineNumber($index + 1);
 
-            foreach(Marker::VALID_TYPES as $type) {
-                $searchTerm = "// $type";
-                if (strpos($line, $searchTerm) !== false) {
-                    $markers[] = new Marker($type, new LineNumber($lineNumber), null);
-                }
+            $marker = $this->fileLineParser->parse($line, $lineNumber);
+            if ($marker) {
+                $markers[] = $marker;
             }
         }
 
