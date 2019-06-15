@@ -23,4 +23,10 @@ class LineNumber
         return $this->lineNumber;
     }
 
+
+    public function equals(LineNumber $other): bool
+    {
+        return $this->lineNumber === $other->lineNumber;
+    }
+
 }
