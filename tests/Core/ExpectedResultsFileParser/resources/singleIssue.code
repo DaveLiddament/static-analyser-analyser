@@ -1,0 +1,8 @@
+<?php
+
+function Foo()
+{
+    echo $bar; // ISSUE
+}
+
+foo();

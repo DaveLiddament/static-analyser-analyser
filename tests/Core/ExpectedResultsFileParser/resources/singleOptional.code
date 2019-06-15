@@ -1,0 +1,8 @@
+<?php
+
+function Foo() // OPTIONAL
+{
+    echo $bar;
+}
+
+foo();

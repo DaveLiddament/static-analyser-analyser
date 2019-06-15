@@ -1,0 +1,12 @@
+<?php
+
+namespace foo;
+
+function Foo() // OPTIONAL
+{
+    echo $bar; // ISSUE
+}
+
+$a = 7 + Bar(); // ISSUE
+
+foo(); // OK
