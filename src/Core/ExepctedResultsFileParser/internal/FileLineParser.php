@@ -34,13 +34,13 @@ class FileLineParser
         return null;
     }
 
-    private function getMarker(string $line, int $position, string $type, $lineNumber): Marker
+    private function getMarker(string $line, int $position, string $type, LineNumber $lineNumber): Marker
     {
         $removeBefore = $position + strlen($type);
         $remaining = substr($line, $removeBefore);
         $trimmed = trim($remaining);
 
-        $additionalInformation = empty($trimmed) ? null : $trimmed;
+        $additionalInformation = $trimmed === '' ? null : $trimmed;
 
         return new Marker($type, $lineNumber, $additionalInformation);
     }

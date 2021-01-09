@@ -11,6 +11,7 @@ use DaveLiddament\StaticAnalyserAnalyser\Core\ExepctedResultsFileParser\internal
 use DaveLiddament\StaticAnalyserAnalyser\Core\ExepctedResultsFileParser\Marker;
 use DaveLiddament\StaticAnalyserAnalyser\Core\ExepctedResultsFileParser\MarkerFileParser;
 use PHPUnit\Framework\TestCase;
+use Webmozart\Assert\Assert;
 
 class MarkerFileParserTest extends TestCase
 {
@@ -26,6 +27,9 @@ class MarkerFileParserTest extends TestCase
     }
 
 
+    /**
+     * @return array<int,array{string,Marker[]}>
+     */
     public function dataProvider(): array
     {
         return [
@@ -75,6 +79,7 @@ class MarkerFileParserTest extends TestCase
     {
         $fullFileName = __DIR__ . "/resources/$fileName";
         $fileContents = file_get_contents($fullFileName);
+        Assert::notFalse($fileContents);
         $actualResults = $this->markerFileParser->getMarkers($fileContents);
         $this->assertEquals(count($expectedResults), count($actualResults));
         foreach($expectedResults as $index => $expectedResult) {

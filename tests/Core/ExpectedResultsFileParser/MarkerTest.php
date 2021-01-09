@@ -14,6 +14,9 @@ use PHPUnit\Framework\TestCase;
 class MarkerTest extends TestCase
 {
 
+    /**
+     * @return array<int,array{string}>
+     */
     public function dataProvider(): array
     {
         return [

@@ -25,6 +25,9 @@ class FileLineParserTest extends TestCase
         $this->fileLineParser = new FileLineParser();
     }
 
+    /**
+     * @return array<int,array{string}>
+     */
     public function noMarkerDataProvider(): array
     {
         return [
@@ -45,6 +48,9 @@ class FileLineParserTest extends TestCase
     }
 
 
+    /**
+     * @return array<int,array{string,Marker}>
+     */
     public function markerDataProvider(): array
     {
         // Has to go here a setup not called before dataProviders

@@ -36,7 +36,7 @@ class MarkerFileParser
             $lineNumber = new LineNumber($index + 1);
 
             $marker = $this->fileLineParser->parse($line, $lineNumber);
-            if ($marker) {
+            if ($marker !== null) {
                 $markers[] = $marker;
             }
         }
